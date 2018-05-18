@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureStubRunner(ids = "com.contracts:app1:+:stubs:8080", workOffline = true)
+@AutoConfigureStubRunner(ids = "com.contracts:producer:+:stubs:8080", workOffline = true)
 public class App2ApplicationTests {
 
     @Autowired
