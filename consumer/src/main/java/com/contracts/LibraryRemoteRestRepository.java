@@ -16,24 +16,14 @@ public class LibraryRemoteRestRepository {
     @Autowired
     private ObjectMapper objectMapper;
 
-    public Book getAllBook() {
+    public Book getAllBook() throws IOException {
         final String uri = "http://localhost:8080/library";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
 
         String resultString = response.getBody();
-        HttpHeaders headers = response.getHeaders();
 
-        Book book = null;
-        try {
-            book = objectMapper.readValue(resultString, Book.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(resultString);
-        System.out.println(headers);
-        return book;
+        return objectMapper.readValue(resultString, Book.class);
     }
 }

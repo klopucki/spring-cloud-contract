@@ -1,5 +1,6 @@
 package com.contracts;
 
+import com.contracts.controller.BankController;
 import com.contracts.controller.GreetingController;
 import com.contracts.controller.LibraryController;
 import com.contracts.model.Book;
@@ -32,7 +33,9 @@ public abstract class BaseTestClass {
         Book bookToSave = mockGFBook();
         BDDMockito.given(libraryService.findBooks()).willReturn(ImmutableList.of(mockBook()));
         BDDMockito.given(libraryService.save(bookToSave)).willReturn(bookToSave);
-        RestAssuredMockMvc.standaloneSetup(GreetingController.class, libraryController);
+
+        RestAssuredMockMvc.standaloneSetup(
+                BankController.class, GreetingController.class, libraryController);
     }
 
     private Book mockGFBook(){
