@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
+import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureStubRunner(ids = "com.contracts:producer:+:stubs:8080", workOffline = true)
+@AutoConfigureStubRunner(ids = "com.contracts:producer:+:stubs:8080", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 public class BankRemoteRepositoryTest {
 
     @Autowired
